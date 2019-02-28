@@ -1,0 +1,7 @@
+"class","property","type","rule","flag","value"
+"com.alipay.test.acts.model.VirtualEventObject","eventCode","java.lang.String","","Y","null"
+"","topicId","java.lang.String","","Y","null"
+"","eventObject","com.alipay.test.acts.model.VirtualObject","","Y","VirtualObject.csv@1"
+"","nodeDesc","java.lang.String","","Y","null"
+"","isExist","java.lang.String","","Y","null"
+"","nodeGroup","java.lang.String","","Y","null"

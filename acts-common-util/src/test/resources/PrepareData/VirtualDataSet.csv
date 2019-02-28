@@ -1,0 +1,3 @@
+"class","property","type","rule","flag","value"
+"com.alipay.test.acts.model.VirtualDataSet","virtualTables","java.util.List","","Y","VirtualTable.csv@1"
+"","description","java.lang.String","","Y","null"

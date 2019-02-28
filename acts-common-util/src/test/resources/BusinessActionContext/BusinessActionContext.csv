@@ -1,0 +1,7 @@
+"class","property","type","rule","flag","value"
+"com.alipay.dtx.client.core.api.domain.BusinessActionContext","actionId","java.lang.String","","Y","null"
+"","txId","java.lang.String","","Y","null"
+"","activityContext","com.alipay.dtx.client.core.api.domain.BusinessActivityContext","","Y","BusinessActivityContext.csv@1"
+"","actionContext","java.util.Map","","M","Map_Object.csv@1"
+"","actionName","java.lang.String","","Y","null"
+"","systemTxId","java.lang.String","","Y","null"

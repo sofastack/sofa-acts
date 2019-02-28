@@ -1,0 +1,8 @@
+"class","property","type","rule","flag","value"
+"com.alipay.test.acts.model.VirtualTable","flags","java.util.Map","","M","Map_String.csv@1"
+"","nodeDesc","java.lang.String","","Y","null"
+"","tableData","java.util.List","","Y","Map_Object.csv@1"
+"","nodeGroup","java.lang.String","","Y","null"
+"","tableBaseDesc","java.lang.String","","Y","null"
+"","dataObjClazz","java.lang.String","","Y","null"
+"","tableName","java.lang.String","","Y","null"

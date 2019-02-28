@@ -1,0 +1,3 @@
+"class","property","type","rule","flag","value"
+"com.alipay.test.acts.model.VirtualException","description","java.lang.String","","Y","null"
+"","expectException","com.alipay.test.acts.model.VirtualObject","","Y","VirtualObject.csv@1"
