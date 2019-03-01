@@ -56,7 +56,6 @@ public class DateUtilTest {
 
             Assert.assertEquals("2019-01-01 23", str);
 
-
             //========
             date = DateUtil.string2DateTimeBy23("2019-01-01 23:59");
 
@@ -91,7 +90,6 @@ public class DateUtilTest {
 
             Assert.assertEquals("2019-01-01", str);
 
-
             //========
             date = DateUtil.string2DateTimeByAutoZero("2019-01-01 ");
 
@@ -100,15 +98,13 @@ public class DateUtilTest {
 
             Assert.assertEquals("2019-01-01", str);
 
-
             //========
             date = DateUtil.string2DateTimeByAutoZero("2019-01-01 00");
 
             formatter = new SimpleDateFormat("yyyy-MM-dd HH");
             str = formatter.format(date);
 
-            Assert.assertEquals( "2019-01-01 00", str);
-
+            Assert.assertEquals("2019-01-01 00", str);
 
             //========
             date = DateUtil.string2DateTimeByAutoZero("2019-01-01 00:00");
@@ -116,8 +112,7 @@ public class DateUtilTest {
             formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
             str = formatter.format(date);
 
-            Assert.assertEquals("2019-01-01 00:00" , str);
-
+            Assert.assertEquals("2019-01-01 00:00", str);
 
             //========
             date = DateUtil.string2DateTimeByAutoZero("2019-01-01 00:00:00");
@@ -125,8 +120,7 @@ public class DateUtilTest {
             formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             str = formatter.format(date);
 
-            Assert.assertEquals("2019-01-01 00:00:00" , str);
-
+            Assert.assertEquals("2019-01-01 00:00:00", str);
 
             //========
             date = DateUtil.string2DateTimeByAutoZero("2019-01-00");
@@ -363,7 +357,7 @@ public class DateUtilTest {
     }
 
     @Test
-    public void testGetEmailDate() throws  Throwable{
+    public void testGetEmailDate() throws Throwable {
         Date date = new Date(24 * 60 * 60 * 1000);
 
         String emailDateStr = DateUtil.getEmailDate(date);
