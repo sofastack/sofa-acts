@@ -31,11 +31,6 @@
 
     <properties>
         <acts.bom>1.0.0</acts.bom>
-        <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
-        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-        <sonar.jacoco.itReportPath>target/jacoco-it.exec</sonar.jacoco.itReportPath> 
-        <sonar.jacoco.reportPath>target/jacoco-ut.exec</sonar.jacoco.reportPath> 
-        <jacoco.path>${project.build.directory}/jacoco-ut.exec</jacoco.path>
         <jacoco.skip>false</jacoco.skip>
         <license.maven.plugin>3.0</license.maven.plugin>
         <project.encoding>UTF-8</project.encoding>
@@ -277,8 +272,6 @@
                 <version>0.8.2</version>
                 <configuration>
                     <skip>${jacoco.skip}</skip>
-                    <destFile>${jacoco.path}</destFile>
-                    <dataFile>${jacoco.path}</dataFile>
                     <sessionId>jacoco_coverage</sessionId>
                     <excludes>
                         <!--dto-->
@@ -329,7 +322,7 @@
                         <id>report</id>
                         <phase>test</phase>
                         <goals>
-                            <goal>report-aggregate</goal>
+                            <goal>report</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -347,12 +340,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.8.1</version>
-                <configuration>
-                    <argLine>-Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=256m</argLine>
-                    <includes>
-                        <include>**/*Test*.java</include>
-                    </includes>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -377,22 +364,6 @@
             </plugin>
         </plugins>
     </build>
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <version>3.0.5</version>
-                <configuration>
-                    <xmlOutput>true</xmlOutput>
-                    <threshold>High</threshold>
-                    <effort>Default</effort>
-                    <relaxed>true</relaxed>
-                    <findbugsXmlOutput>true</findbugsXmlOutput>
-                </configuration>
-            </plugin>
-        </plugins>
-    </reporting>
     <profiles>
         <profile>
         <id>default</id>
