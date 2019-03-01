@@ -1,6 +1,6 @@
 # ACTS
-[![Build Status](https://travis-ci.org/elseifer/sofa-acts.svg?branch=master)](https://travis-ci.org/elseifer/sofa-acts)
-[![codecov](https://codecov.io/gh/elseifer/sofa-acts/branch/master/graph/badge.svg)](https://codecov.io/gh/elseifer/sofa-acts)
+[![Build Status](https://travis-ci.org/elseifer/sofa-acts.svg?branch=add_ci_config)](https://travis-ci.org/elseifer/sofa-acts)
+[![codecov](https://codecov.io/gh/elseifer/sofa-acts/branch/add_ci_config/graph/badge.svg)](https://codecov.io/gh/elseifer/sofa-acts)
 ![License](https://img.shields.io/badge/license-Apache--2.0-green.svg)
 
 ACTS 是基于数据模型驱动测试引擎的的新一代测试框架，它的数据以 YAML 为载体，在此上构建基于数据模型的驱动引擎，适配 TestNg+SOFABoot 的测试上下文环境；支持高效、标准化构建用例，可视化编辑测试数据，精细化校验结果数据和自动清理 DB 数据，可以有效降低人工录入用例数据的成本，同时支持 API 重写提高测试代码的可扩展可复用性，提供特有注解提高测试代码编排的灵活性。
