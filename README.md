@@ -1,6 +1,6 @@
 # ACTS
-[![Build Status](https://travis-ci.org/alipay/sofa-acts.svg?branch=add_ci_config)](https://travis-ci.org/alipay/sofa-acts)
-[![codecov](https://codecov.io/gh/alipay/sofa-acts/branch/add_ci_config/graph/badge.svg)](https://codecov.io/gh/alipay/sofa-acts)
+[![Build Status](https://travis-ci.org/alipay/sofa-acts.svg?branch=master)](https://travis-ci.org/alipay/sofa-acts)
+[![codecov](https://codecov.io/gh/alipay/sofa-acts/branch/master/graph/badge.svg)](https://codecov.io/gh/alipay/sofa-acts)
 ![License](https://img.shields.io/badge/license-Apache--2.0-green.svg)
 
 ACTS 是基于数据模型驱动测试引擎的的新一代测试框架，它的数据以 YAML 为载体，在此上构建基于数据模型的驱动引擎，适配 TestNg+SOFABoot 的测试上下文环境；支持高效、标准化构建用例，可视化编辑测试数据，精细化校验结果数据和自动清理 DB 数据，可以有效降低人工录入用例数据的成本，同时支持 API 重写提高测试代码的可扩展可复用性，提供特有注解提高测试代码编排的灵活性。
@@ -27,6 +27,6 @@ ACTS 的编译环境的要求为 JDK7 或者 JDK8，需要采用 Apache Maven 3.
 # 五、感谢
 ACTS 源于蚂蚁金服内部众多测试技术人员的经验总结，同时汲取了蚂蚁内部其他优秀白盒测试产品的设计优点，感谢这些工作者们的辛勤付出。
 # 六、示例
-ACTS 入门使用示例
+ACTS 入门[使用示例](https://github.com/alipay/sofa-acts/tree/master/acts-sample)。
 # 七、文档
 请参考 ACTS [用户使用手册](https://www.sofastack.tech/sofa-acts/docs/Usage-Ready)。
