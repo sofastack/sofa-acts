@@ -19,6 +19,7 @@ package com.alipay.test.acts.util;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,20 +34,45 @@ public class DateUtilTest {
     public void testString2DateTimeBy23() {
         try {
             Date date = DateUtil.string2DateTimeBy23("2019-01-01");
-            Assert.assertEquals(date.getTime(), 1546358399000L);
 
+            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            String str = formatter.format(date);
+
+            Assert.assertEquals("2019-01-01", str);
+
+            //========
             date = DateUtil.string2DateTimeBy23("2019-01-01 ");
-            Assert.assertEquals(date.getTime(), 1546358399000L);
 
+            formatter = new SimpleDateFormat("yyyy-MM-dd");
+            str = formatter.format(date);
+
+            Assert.assertEquals("2019-01-01", str);
+
+            //========
             date = DateUtil.string2DateTimeBy23("2019-01-01 23");
-            Assert.assertEquals(date.getTime(), 1546358399000L);
 
+            formatter = new SimpleDateFormat("yyyy-MM-dd HH");
+            str = formatter.format(date);
+
+            Assert.assertEquals("2019-01-01 23", str);
+
+            //========
             date = DateUtil.string2DateTimeBy23("2019-01-01 23:59");
-            Assert.assertEquals(date.getTime(), 1546358399000L);
 
+            formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            str = formatter.format(date);
+
+            Assert.assertEquals("2019-01-01 23:59", str);
+
+            //========
             date = DateUtil.string2DateTimeBy23("2019-01-01 23:59:59");
-            Assert.assertEquals(date.getTime(), 1546358399000L);
 
+            formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            str = formatter.format(date);
+
+            Assert.assertEquals("2019-01-01 23:59:59", str);
+
+            //========
             date = DateUtil.string2DateTimeBy23("2019-01-61");
 
         } catch (Exception ex) {
@@ -58,20 +84,45 @@ public class DateUtilTest {
     public void testString2DateTimeByAutoZero() {
         try {
             Date date = DateUtil.string2DateTimeByAutoZero("2019-01-01");
-            Assert.assertEquals(date.getTime(), 1546272000000L);
 
+            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            String str = formatter.format(date);
+
+            Assert.assertEquals("2019-01-01", str);
+
+            //========
             date = DateUtil.string2DateTimeByAutoZero("2019-01-01 ");
-            Assert.assertEquals(date.getTime(), 1546272000000L);
 
+            formatter = new SimpleDateFormat("yyyy-MM-dd");
+            str = formatter.format(date);
+
+            Assert.assertEquals("2019-01-01", str);
+
+            //========
             date = DateUtil.string2DateTimeByAutoZero("2019-01-01 00");
-            Assert.assertEquals(date.getTime(), 1546272000000L);
 
+            formatter = new SimpleDateFormat("yyyy-MM-dd HH");
+            str = formatter.format(date);
+
+            Assert.assertEquals("2019-01-01 00", str);
+
+            //========
             date = DateUtil.string2DateTimeByAutoZero("2019-01-01 00:00");
-            Assert.assertEquals(date.getTime(), 1546272000000L);
 
+            formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            str = formatter.format(date);
+
+            Assert.assertEquals("2019-01-01 00:00", str);
+
+            //========
             date = DateUtil.string2DateTimeByAutoZero("2019-01-01 00:00:00");
-            Assert.assertEquals(date.getTime(), 1546272000000L);
 
+            formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            str = formatter.format(date);
+
+            Assert.assertEquals("2019-01-01 00:00:00", str);
+
+            //========
             date = DateUtil.string2DateTimeByAutoZero("2019-01-00");
 
         } catch (Exception e) {
@@ -115,7 +166,11 @@ public class DateUtilTest {
     public void testParseDateNoTime() {
         try {
             Date date = DateUtil.parseDateNoTime("20070614");
-            Assert.assertEquals(date.getTime(), 1181750400000L);
+
+            DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+            String str = formatter.format(date);
+
+            Assert.assertEquals("20070614", str);
 
             date = DateUtil.parseDateNoTime("200706");
 
@@ -129,7 +184,11 @@ public class DateUtilTest {
     public void testParseDateNoTime2() {
         try {
             Date date = DateUtil.parseDateNoTime("20070614", "yyyyMMdd");
-            Assert.assertEquals(date.getTime(), 1181750400000L);
+
+            DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+            String str = formatter.format(date);
+
+            Assert.assertEquals("20070614", str);
 
             date = DateUtil.parseDateNoTime("20070614", "");
 
@@ -298,10 +357,16 @@ public class DateUtilTest {
     }
 
     @Test
-    public void testGetEmailDate() {
-        String res = DateUtil.getEmailDate(new Date(24 * 60 * 60 * 1000));
+    public void testGetEmailDate() throws Throwable {
+        Date date = new Date(24 * 60 * 60 * 1000);
 
-        Assert.assertEquals(res, "1970年01月02日08:00:00");
+        String emailDateStr = DateUtil.getEmailDate(date);
+
+        DateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日HH:mm:ss");
+
+        Date emailDate = formatter.parse(emailDateStr);
+
+        Assert.assertEquals(emailDate, date);
 
     }
 

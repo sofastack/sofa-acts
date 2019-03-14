@@ -41,8 +41,9 @@ public class DateTypeGeneratorTest {
         Date date = new Date();
         long aftertime = (date.getTime() / 1000) + 60 * 60 * 24;
         date.setTime(aftertime * 1000);
-        Assert.assertEquals(date.toString(),
-            dateTypeGenerator.generateFieldObject(Date.class, null, "today+1").toString());
+        Assert.assertTrue(Math.abs(date.getTime()
+                                   - ((Date) dateTypeGenerator.generateFieldObject(Date.class,
+                                       null, "today+1")).getTime()) < 5000);
 
     }
 

@@ -16,11 +16,9 @@
  */
 package com.alipay.test.acts.object.comparer.impl;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 import com.alipay.test.acts.util.DateUtil;
-import oracle.sql.TIMESTAMP;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
@@ -88,12 +86,7 @@ public class DateComparer implements UnitComparer {
         try {
             actDate = (Date) actual;
         } catch (Exception e1) {
-            try {
-                Timestamp tt = ((TIMESTAMP) actual).timestampValue();
-                actDate = new Date(tt.getTime());
-            } catch (Exception e2) {
-                ActsLogUtil.fail(LOG, "parsing error:" + actual, e1);
-            }
+            ActsLogUtil.fail(LOG, "parsing error:" + actual, e1);
         }
         String actString = null;
 
