@@ -16,6 +16,7 @@
  */
 package com.alipay.test.acts.utils;
 
+import com.alipay.yaml.DumperOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -35,23 +36,29 @@ public class PropertiesUtilTest {
         Properties properties = new Properties();
         properties.put("cdd", "boy");
         String str = PropertiesUtil.convert2String(properties, false);
-        Assert.assertEquals(str, "cdd=boy\n");
+        Assert.assertEquals(str, "cdd=boy"
+                                 + DumperOptions.LineBreak.getPlatformLineBreak().getString());
 
         Map<String, String> map = new HashMap<String, String>();
         map.put("cdd", "boy");
         str = PropertiesUtil.convert2String(map, false);
-        Assert.assertEquals(str, "cdd=boy\n");
+        Assert.assertEquals(str, "cdd=boy"
+                                 + DumperOptions.LineBreak.getPlatformLineBreak().getString());
     }
 
     @Test
     public void testRestoreFromString() {
-        Properties properties = PropertiesUtil.restoreFromString("cdd=boy\n", "UTF-8");
+        Properties properties = PropertiesUtil.restoreFromString("cdd=boy"
+                                                                 + DumperOptions.LineBreak
+                                                                     .getPlatformLineBreak()
+                                                                     .getString(), "UTF-8");
         Assert.assertEquals(properties.get("cdd"), "boy");
     }
 
     @Test
     public void testRestoreMap() {
-        Map<String, String> map = PropertiesUtil.restoreMap("cdd=boy\n");
+        Map<String, String> map = PropertiesUtil
+            .restoreMap("cdd=boy" + DumperOptions.LineBreak.getPlatformLineBreak().getString());
         Assert.assertEquals(map.get("cdd"), "boy");
     }
 

@@ -23,6 +23,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import java.io.File;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -67,7 +68,7 @@ public class MapTypeGenerator implements ObjectGenerator {
                                    + String.valueOf(((Map) obj).get(o)) + ";";
             }
         } else {
-            String reCsvPath = StringUtils.substringAfterLast(csvPath, "/");
+            String reCsvPath = StringUtils.substringAfterLast(csvPath, File.separator);
             String tempCollectionString = reCsvPath + "@";
             for (Object o : ((Map) obj).keySet()) {
                 try {

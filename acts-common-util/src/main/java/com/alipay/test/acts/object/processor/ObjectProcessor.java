@@ -43,6 +43,7 @@ import org.reflections.scanners.SubTypesScanner;
 import org.reflections.util.ClasspathHelper;
 import org.reflections.util.FilterBuilder;
 
+import java.io.File;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -207,17 +208,17 @@ public class ObjectProcessor {
                 } else {
                     if (objectTypeManager.isCollectionType(fieldType)) {
 
-                        String csvDir = StringUtils.substringBeforeLast(csvPath, "/");
+                        String csvDir = StringUtils.substringBeforeLast(csvPath, File.separator);
                         String exceptValue = (String) property.getExpectValue();
                         String desc = StringUtils.substringAfterLast(exceptValue, "@");
                         String convertCsv = null;
                         if (StringUtils.substringBefore(exceptValue, "@").contains(":")) {
                             convertCsv = csvDir
-                                         + "/"
+                                         + File.separator
                                          + StringUtils.substringAfter(
                                              (StringUtils.substringBefore(exceptValue, "@")), ":");
                         } else {
-                            convertCsv = csvDir + "/"
+                            convertCsv = csvDir + File.separator
                                          + StringUtils.substringBefore(exceptValue, "@");
                         }
 

@@ -232,13 +232,12 @@ public class CSVHelper {
      */
     public static String getCsvFileName(Class<?> objClass, String csvPath) {
 
-        String[] paths = csvPath.split("/");
-        ArrayUtils.reverse(paths);
+        String csvName = StringUtils.substringAfterLast(csvPath, File.separator);
 
         String className = objClass.getSimpleName() + ".csv";
 
-        if (!StringUtils.equals(className, paths[0])) {
-            csvPath = StringUtils.replace(csvPath, paths[0], className);
+        if (!StringUtils.equals(className, csvName)) {
+            csvPath = StringUtils.replace(csvPath, csvName, className);
         }
 
         return csvPath;

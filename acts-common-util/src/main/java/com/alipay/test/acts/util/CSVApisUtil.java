@@ -132,7 +132,7 @@ public class CSVApisUtil {
         }
         if (clsType == null) {
             csvFolder = genRootPath + clsAdd.getSimpleName();
-            csvRootPath = csvFolder + "/" + clsAdd.getSimpleName() + ".csv";
+            csvRootPath = csvFolder + File.separator + clsAdd.getSimpleName() + ".csv";
         } else {
             if (clsType instanceof ParameterizedType) {
                 Class<?> clsSub = getParameRawCls(clsType);
@@ -141,13 +141,13 @@ public class CSVApisUtil {
                 //csv name with a generic name
                 csvFolder = genRootPath + clsAdd.getSimpleName() + "_" + clsSub.getSimpleName()
                             + "_" + typeSub.getSimpleName();
-                csvRootPath = csvFolder + "/" + clsAdd.getSimpleName() + "_"
+                csvRootPath = csvFolder + File.separator + clsAdd.getSimpleName() + "_"
                               + clsSub.getSimpleName() + "_" + typeSub.getSimpleName() + ".csv";
             } else {
                 Class<?> clsSub = getClass(clsType, 0);
                 //csv name with a generic name
                 csvFolder = genRootPath + clsAdd.getSimpleName() + "_" + clsSub.getSimpleName();
-                csvRootPath = csvFolder + "/" + clsAdd.getSimpleName() + "_"
+                csvRootPath = csvFolder + File.separator + clsAdd.getSimpleName() + "_"
                               + clsSub.getSimpleName() + ".csv";
             }
 
@@ -172,13 +172,12 @@ public class CSVApisUtil {
             LOG.warn("do nothing when simple type");
             return null;
         }
-        String[] paths = csvPath.split("/");
-        ArrayUtils.reverse(paths);
+        String csvName = cutCsvName(csvPath);
 
         String className = objClass.getSimpleName() + ".csv";
 
-        if (!StringUtils.equals(className, paths[0])) {
-            csvPath = StringUtils.replace(csvPath, paths[0], className);
+        if (!StringUtils.equals(className, csvName)) {
+            csvPath = StringUtils.replace(csvPath, csvName, className);
         }
 
         return csvPath;
@@ -195,13 +194,12 @@ public class CSVApisUtil {
         if (null == subClass) {
             return getCsvFileName(sueperClass, csvPath);
         }
-        String[] paths = csvPath.split("/");
-        ArrayUtils.reverse(paths);
+        String csvName = cutCsvName(csvPath);
 
         String className = sueperClass.getSimpleName() + "_" + subClass.getSimpleName() + ".csv";
 
-        if (!StringUtils.equals(className, paths[0])) {
-            csvPath = StringUtils.replace(csvPath, paths[0], className);
+        if (!StringUtils.equals(className, csvName)) {
+            csvPath = StringUtils.replace(csvPath, csvName, className);
         }
 
         return csvPath;
@@ -625,7 +623,7 @@ public class CSVApisUtil {
     }
 
     public static String cutCsvName(final String csvRoot) {
-        return StringUtils.substringAfterLast(csvRoot, "/");
+        return StringUtils.substringAfterLast(csvRoot, File.separator);
     }
 
     public static Map<String, Field> findTargetClsFields(Class<?> cls) {

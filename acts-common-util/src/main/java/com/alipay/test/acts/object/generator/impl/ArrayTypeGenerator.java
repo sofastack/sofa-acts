@@ -22,6 +22,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import java.io.File;
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 
@@ -58,7 +59,7 @@ public class ArrayTypeGenerator implements ObjectGenerator {
                 collectionString = collectionString + String.valueOf(Array.get(obj, i)) + ";";
             }
         } else {
-            String reCsvPath = StringUtils.substringAfterLast(csvPath, "/");
+            String reCsvPath = StringUtils.substringAfterLast(csvPath, File.separator);
             collectionString = reCsvPath + "@";
             for (int i = 0; i < Array.getLength(obj); i++) {
                 try {
