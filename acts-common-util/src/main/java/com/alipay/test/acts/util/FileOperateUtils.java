@@ -131,7 +131,7 @@ public class FileOperateUtils {
     public static boolean renameFile(File fromFile, String newName) {
 
         String orgiFilePath = fromFile.getParent();
-        File newFile = new File(orgiFilePath + "/" + newName);
+        File newFile = new File(orgiFilePath + File.separator + newName);
 
         if (newFile.exists() && newFile.delete()) {
             log.error(newFile.getAbsolutePath() + " delete sucessfully");

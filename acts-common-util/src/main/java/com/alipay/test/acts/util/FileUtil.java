@@ -112,8 +112,8 @@ public class FileUtil {
         if (StringUtils.isBlank(originFilePath)) {
             originFilePath = "";
         } else {
-            originFilePath = originFilePath.contains("/") ? originFilePath.substring(0,
-                originFilePath.lastIndexOf("/") + 1) : "";
+            originFilePath = originFilePath.contains(File.separator) ? originFilePath.substring(0,
+                originFilePath.lastIndexOf(File.separator) + 1) : "";
         }
         String finalFilePath = originFilePath + targetFilePath;
         File file = new File(finalFilePath);

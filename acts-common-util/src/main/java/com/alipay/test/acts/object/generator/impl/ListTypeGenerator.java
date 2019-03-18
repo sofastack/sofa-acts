@@ -26,6 +26,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Assert;
 
+import java.io.File;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
@@ -67,7 +68,7 @@ public class ListTypeGenerator implements ObjectGenerator {
                 collectionString = collectionString + String.valueOf(((List) obj).get(i)) + ";";
             }
         } else {
-            String reCsvPath = StringUtils.substringAfterLast(csvPath, "/");
+            String reCsvPath = StringUtils.substringAfterLast(csvPath, File.separator);
             String tempCollectionString = reCsvPath + "@";
             for (int i = 0; i < ((List) obj).size(); i++) {
                 try {
