@@ -30,6 +30,6 @@ public class FullTableAnalysisTest {
     public void testetFullTableByDalConfigG() {
 
         File dalConfigXml = new File("pom.xml");
-        Assert.assertTrue(FullTableAnalysis.getFullTableByDalConfig(dalConfigXml).size() == 0);
+        Assert.assertTrue(FullTableAnalysis.getFullTableByDalConfig(dalConfigXml).size() == 1);
     }
 }
