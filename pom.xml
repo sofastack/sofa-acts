@@ -50,7 +50,6 @@
         <url>http://github.com/alipay/sofa-acts/tree/master</url>
     </scm>
 
-
     <properties>
         <acts.bom>1.0.0</acts.bom>
         <jacoco.skip>false</jacoco.skip>
