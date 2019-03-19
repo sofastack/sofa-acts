@@ -447,8 +447,7 @@
                 <version>3.0.5</version>
                 <configuration>
                     <xmlOutput>true</xmlOutput>
-                    <threshold>Hi
-                        gh</threshold>
+                    <threshold>High</threshold>
                     <effort>Default</effort>
                     <relaxed>true</relaxed>
                     <findbugsXmlOutput>true</findbugsXmlOutput>
