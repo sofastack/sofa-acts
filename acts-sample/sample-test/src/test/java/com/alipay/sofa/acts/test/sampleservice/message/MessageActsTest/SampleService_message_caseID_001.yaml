@@ -1,0 +1,167 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+SampleService_message_caseID_001: !!com.alipay.test.acts.model.PrepareData
+  args:
+    description: null
+    inputArgs:
+    - description: i
+      flags: {}
+      nodeDesc: null
+      nodeGroup: null
+      objBaseDesc: i
+      objBaseName: Integer
+      objClass: java.lang.Integer
+      object: 0
+  depDataSet:
+    description: null
+    virtualTables: []
+  description: 新增SampleService_message_TemplateCase
+  expectDataSet:
+    description: null
+    virtualTables: []
+  expectEventSet:
+    description: null
+    virtualEventObjects: []
+  expectException:
+    description: null
+    exceptionClass: null
+    expectException:
+      description: null
+      flags: {}
+      nodeDesc: null
+      nodeGroup: null
+      objBaseDesc: null
+      objBaseName: null
+      objClass: null
+      object: null
+    expectExceptionObject: null
+  expectResult:
+    description: null
+    result:
+      description: null
+      flags: {}
+      nodeDesc: null
+      nodeGroup: null
+      objBaseDesc: null
+      objBaseName: null
+      objClass: java.lang.String
+      object: Hello, world
+    resultClazz: java.lang.String
+  virtualParams:
+    description: null
+    params: {}
+SampleService_message_caseID_002: !!com.alipay.test.acts.model.PrepareData
+  args:
+    description: null
+    inputArgs:
+    - description: i
+      flags: {}
+      nodeDesc: null
+      nodeGroup: null
+      objBaseDesc: i
+      objBaseName: Integer
+      objClass: java.lang.Integer
+      object: -1
+  depDataSet:
+    description: null
+    virtualTables: []
+  description: New Copied Case_新增SampleService_message_TemplateCase002
+  expectDataSet:
+    description: null
+    virtualTables: []
+  expectEventSet:
+    description: null
+    virtualEventObjects: []
+  expectException:
+    description: null
+    exceptionClass: null
+    expectException:
+      description: null
+      flags: {}
+      nodeDesc: null
+      nodeGroup: null
+      objBaseDesc: null
+      objBaseName: null
+      objClass: null
+      object: null
+    expectExceptionObject: null
+  expectResult:
+    description: null
+    result:
+      description: null
+      flags: {}
+      nodeDesc: null
+      nodeGroup: null
+      objBaseDesc: null
+      objBaseName: null
+      objClass: java.lang.String
+      object: Hello, Acts
+    resultClazz: java.lang.String
+  virtualParams:
+    description: null
+    params: {}
+SampleService_message_caseID_003: !!com.alipay.test.acts.model.PrepareData
+  args:
+    description: null
+    inputArgs:
+    - description: i
+      flags: {}
+      nodeDesc: null
+      nodeGroup: null
+      objBaseDesc: i
+      objBaseName: Integer
+      objClass: java.lang.Integer
+      object: 1
+  depDataSet:
+    description: null
+    virtualTables: []
+  description: New Copied Case_New Copied Case_新增SampleService_message_TemplateCase002003
+  expectDataSet:
+    description: null
+    virtualTables: []
+  expectEventSet:
+    description: null
+    virtualEventObjects: []
+  expectException:
+    description: null
+    exceptionClass: null
+    expectException:
+      description: null
+      flags: {}
+      nodeDesc: null
+      nodeGroup: null
+      objBaseDesc: null
+      objBaseName: null
+      objClass: null
+      object: null
+    expectExceptionObject: null
+  expectResult:
+    description: null
+    result:
+      description: null
+      flags: {}
+      nodeDesc: null
+      nodeGroup: null
+      objBaseDesc: null
+      objBaseName: null
+      objClass: java.lang.String
+      object: Hello, Service SOFABoot
+    resultClazz: java.lang.String
+  virtualParams:
+    description: null
+    params: {}
