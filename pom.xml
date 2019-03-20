@@ -29,13 +29,29 @@
         </license>
     </licenses>
 
+    <developers>
+        <developer>
+            <name>zhuyanli99</name>
+            <email>zhiqiang.li@alipay.com</email>
+            <organization>Ant Financial</organization>
+            <organizationUrl>https://www.alipay.com/</organizationUrl>
+        </developer>
+        <developer>
+            <name>elseifer</name>
+            <email>ddc.niqgniq@gmail.com</email>
+            <organization>Ant Financial</organization>
+            <organizationUrl>https://www.alipay.com/</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/alipay/sofa-acts.git</connection>
+        <developerConnection>scm:git:ssh://github.com/alipay/sofa-acts.git</developerConnection>
+        <url>http://github.com/alipay/sofa-acts/tree/master</url>
+    </scm>
+
     <properties>
         <acts.bom>1.0.0</acts.bom>
-        <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
-        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-        <sonar.jacoco.itReportPath>target/jacoco-it.exec</sonar.jacoco.itReportPath> 
-        <sonar.jacoco.reportPath>target/jacoco-ut.exec</sonar.jacoco.reportPath> 
-        <jacoco.path>${project.build.directory}/jacoco-ut.exec</jacoco.path>
         <jacoco.skip>false</jacoco.skip>
         <license.maven.plugin>3.0</license.maven.plugin>
         <project.encoding>UTF-8</project.encoding>
@@ -175,11 +191,6 @@
             </dependency>
 
             <dependency>
-                <groupId>com.oracle</groupId>
-                <artifactId>ojdbc6</artifactId>
-                <version>11.2.0.3</version>
-            </dependency>
-            <dependency>
                 <groupId>org.azeckoski</groupId>
                 <artifactId>reflectutils</artifactId>
                 <version>0.9.20</version>
@@ -245,8 +256,9 @@
                     <includes>
                         <include>**/src/main/java/com/alipay/test/**</include>
                         <include>**/src/test/java/com/alipay/test/**</include>
-                        <include>**/src/test/java/com/demo/poc/accountcenter/**</include>
-                        <include>**/src/main/java/com/demo/poc/accountcenter/**</include>
+                        <include>**/src/test/java/com/alipay/sample/**</include>
+                        <include>**/src/main/java/com//alipay/sofa/**</include>
+                        <include>**/src/test/java/com//alipay/sofa/**</include>
                     </includes>
                     <excludes>
                         <exclude>**/src/main/java/com/alipay/yaml/**</exclude>
@@ -279,11 +291,9 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.0</version>
+                <version>0.8.2</version>
                 <configuration>
                     <skip>${jacoco.skip}</skip>
-                    <destFile>${jacoco.path}</destFile>
-                    <dataFile>${jacoco.path}</dataFile>
                     <sessionId>jacoco_coverage</sessionId>
                     <excludes>
                         <!--dto-->
@@ -322,53 +332,19 @@
                         <exclude>**/com/alipay/test/acts/utils/config/**/*.class</exclude>
                         <exclude>**/com/alipay/test/acts/utils/DetailCollectUtils.class</exclude>
                     </excludes>
-                    <rules>
-                        <rule implementation="org.jacoco.maven.RuleConfiguration">
-                            <element>BUNDLE</element>
-                            <limits>　　
-                                <limit implementation="org.jacoco.report.check.Limit">
-                                    <counter>METHOD</counter>
-                                    <value>COVEREDRATIO</value>
-                                    <minimum>0.50</minimum>
-                                </limit>
-                                <limit implementation="org.jacoco.report.check.Limit">
-                                    <counter>BRANCH</counter>
-                                    <value>COVEREDRATIO</value>
-                                    <minimum>0.40</minimum>
-                                </limit>
-                                <limit implementation="org.jacoco.report.check.Limit">
-                                    <counter>CLASS</counter>
-                                    <value>MISSEDCOUNT</value>
-                                    <maximum>0</maximum>
-                                </limit>
-                            </limits>
-                        </rule>
-                    </rules>
                 </configuration>
                 <executions>
                     <execution>
-                        <id>pre-test</id>
-                        <phase>process-classes</phase>
+                        <id>default-prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
-                        <configuration>
-                            <propertyName>coverageAgent</propertyName>
-                        </configuration>
                     </execution>
-                    <!--coverage report-->
                     <execution>
                         <id>report</id>
-                        <phase>prepare-package</phase>
+                        <phase>test</phase>
                         <goals>
                             <goal>report</goal>
-                        </goals>
-                    </execution>
-                    <!--coverage check-->
-                    <execution>
-                        <id>check</id>
-                        <goals>
-                            <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -386,13 +362,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.8.1</version>
-                <configuration>
-                    <argLine>-Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=256m
-                        ${coverageAgent}</argLine>
-                    <includes>
-                        <include>**/*Test*.java</include>
-                    </includes>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -417,46 +386,125 @@
             </plugin>
         </plugins>
     </build>
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <version>3.0.5</version>
-                <configuration>
-                    <xmlOutput>true</xmlOutput>
-                    <threshold>High</threshold>
-                    <effort>Default</effort>
-                    <relaxed>true</relaxed>
-                    <findbugsXmlOutput>true</findbugsXmlOutput>
-                </configuration>
-            </plugin>
-        </plugins>
-    </reporting>
     <profiles>
         <profile>
-        <id>default</id>
-        <activation>
-            <activeByDefault>true</activeByDefault>
-        </activation>
-        <repositories>
-            <repository>
-                <snapshots>
-                    <enabled>true</enabled>
-                </snapshots>
-                <id>maven-snapshot</id>
-                <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            </repository>
-        </repositories>
-        <pluginRepositories>
-            <pluginRepository>
-                <snapshots>
-                    <enabled>true</enabled>
-                </snapshots>
-                <id>maven-snapshot</id>
-                <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            </pluginRepository>
-        </pluginRepositories>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.9.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.7</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+                <repository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+
+        <profile>
+            <id>snapshot</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.7</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                    <id>maven-snapshot</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                    <id>maven-snapshot</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </pluginRepository>
+            </pluginRepositories>
         </profile>
     </profiles>
 
