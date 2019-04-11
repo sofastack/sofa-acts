@@ -28,11 +28,13 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.math.BigDecimal;
 
 /**
  *
@@ -76,9 +78,43 @@ public class CSVApisUtilTest {
     @Test
     public void testAddSimpleValue() {
         List<String> values = new ArrayList<String>(1);
+
+        // Date
         CSVApisUtil.addSimpleValue("", Date.class, values);
         Assert.assertEquals(values.get(0), "D");
         Assert.assertEquals(values.get(1), "today");
+        values.clear();
+
+        // Currency
+        CSVApisUtil.addSimpleValue("", Currency.class, values);
+        Assert.assertEquals(values.get(0), "Y");
+        Assert.assertEquals(values.get(1), "CNY");
+        values.clear();
+
+        // CurrencyValue
+        CSVApisUtil.addSimpleValue("currencyValue", Class.class, values);
+        Assert.assertEquals(values.get(0), "Y");
+        Assert.assertEquals(values.get(1), "156");
+        values.clear();
+
+        // Integer
+        CSVApisUtil.addSimpleValue("", Integer.class, values);
+        Assert.assertEquals(values.get(0), "Y");
+        Assert.assertEquals(values.get(1), "0");
+        values.clear();
+
+        // BigDecimal
+        CSVApisUtil.addSimpleValue("", BigDecimal.class, values);
+        Assert.assertEquals(values.get(0), "Y");
+        Assert.assertEquals(values.get(1), "0.001");
+        values.clear();
+
+        // Else
+        CSVApisUtil.addSimpleValue("", Number.class, values);
+        Assert.assertNotEquals(values, null);
+        Assert.assertEquals(values.get(0), "Y");
+        Assert.assertEquals(values.get(1), "null");
+        values.clear();
     }
 
     /***
