@@ -43,4 +43,68 @@ public class MapComparerTest {
         Assert.assertTrue(mapComparer.compare(expect, act, null));
 
     }
+
+    @Test
+    public void testNullEqualsNull() {
+        MapComparer mapComparer = new MapComparer();
+        HashMap<String, String> expect = null;
+        HashMap<String, String> actual = null;
+
+        Assert.assertTrue(mapComparer.compare(expect, actual, null));
+    }
+
+    @Test
+    public void testMapNotEqualsNull() {
+        MapComparer mapComparer = new MapComparer();
+        HashMap<String, String> expect = new HashMap<String, String>();
+        expect.put("test", "test");
+        expect.put("test1", "test");
+        HashMap<String, String> actual = null;
+
+        Assert.assertFalse(mapComparer.compare(expect, actual, null));
+    }
+
+    @Test
+    public void testStringNotEqualsMap() {
+        MapComparer mapComparer = new MapComparer();
+        String expect = "";
+        HashMap<String, String> actual = new HashMap<String, String>();
+        actual.put("test", "test");
+        actual.put("test1", "test");
+
+        Assert.assertFalse(mapComparer.compare(expect, actual, null));
+    }
+
+    @Test
+    public void testMapNotEqualsString() {
+        MapComparer mapComparer = new MapComparer();
+        HashMap<String, String> expect = new HashMap<String, String>();
+        expect.put("test", "test");
+        expect.put("test1", "test");
+        String actual = "{}";
+
+        Assert.assertFalse(mapComparer.compare(expect, actual, null));
+    }
+
+    @Test
+    public void testNullNotEqualsString() {
+        MapComparer mapComparer = new MapComparer();
+        HashMap<String, String> expect = null;
+        String actual = "";
+
+        Assert.assertFalse(mapComparer.compare(expect, actual, null));
+    }
+
+    @Test
+    public void testNotEqualMaps() {
+        MapComparer mapComparer = new MapComparer();
+        HashMap<String, String> expect = new HashMap<String, String>();
+        expect.put("1", "Y");
+        expect.put("2", "N");
+        HashMap<String, String> actual = new HashMap<String, String>();
+        actual.put("1", "test");
+        actual.put("2", "test");
+
+        Assert.assertFalse(mapComparer.compare(expect, actual, null));
+    }
 }
