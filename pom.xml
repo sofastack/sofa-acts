@@ -56,7 +56,7 @@
         <license.maven.plugin>3.0</license.maven.plugin>
         <project.encoding>UTF-8</project.encoding>
         <maven.java.formatter.plugin>0.4</maven.java.formatter.plugin>
-        <spring.version>4.3.18.RELEASE</spring.version>
+        <spring.version>5.2.2.RELEASE</spring.version>
     </properties>
 
     <dependencyManagement>
